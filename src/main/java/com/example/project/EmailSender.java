@@ -12,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 	
+	//send
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
