@@ -7,6 +7,17 @@
 	<groupId>nl.hu.bep.friendspammer</groupId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	
+	<distributionManagement>
+  <repository>
+    <id>packagecloud-myrepo</id>
+    <url>packagecloud+https://packagecloud.io/test-user/myrepo</url>
+  </repository>
+  <snapshotRepository>
+    <id>packagecloud-myrepo</id>
+    <url>packagecloud+https://packagecloud.io/test-user/myrepo</url>
+  </snapshotRepository>
+</distributionManagement>
 
 	<build>
 		<plugins>
@@ -24,6 +35,13 @@
 				<version>2.22.1</version>
 			</plugin>
 		</plugins>
+  <extensions>
+    <extension>
+      <groupId>io.packagecloud.maven.wagon</groupId>
+      <artifactId>maven-packagecloud-wagon</artifactId>
+      <version>0.0.6</version>
+    </extension>
+  </extensions>
 	</build>
 
 
