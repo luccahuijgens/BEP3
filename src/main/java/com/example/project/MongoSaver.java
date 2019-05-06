@@ -22,17 +22,14 @@ public class MongoSaver {
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
 		String userName = "lhuijgens";
 		String password = "lhuijgens";
-		String database = "testdatabase";
+		String databaseName = "BEP";
 		
 		boolean success = true;
-
-		MongoClientURI uri=new MongoClientURI("mongodb+srv://"+userName+":"+password+"@cluster0-3q7uo.mongodb.net/test?retryWrites=true");		
-		
-		try (MongoClient mongoClient=new MongoClient(uri);) {
-			
-			MongoDatabase db = mongoClient.getDatabase( database );
-			
-			MongoCollection<Document> c = db.getCollection("email");
+			try {
+			System.out.println("Connecting to MongoDB");
+			MongoClient mongoClient = new MongoClient("localhost",27017);
+			MongoDatabase database = mongoClient.getDatabase(databaseName);
+			MongoCollection<Document> c = database.getCollection("email");
 			
 			Document  doc = new Document ("to", to)
 			        .append("from", from)
