@@ -25,9 +25,11 @@ public class MongoSaver {
 		String databaseName = "BEP";
 		
 		boolean success = true;
-			try {
+		try {
 			System.out.println("Connecting to MongoDB");
-			MongoClient mongoClient = new MongoClient("localhost",27017);
+			MongoClientURI uri = new MongoClientURI("mongodb+srv://"+userName+":"+password+"@cluster0-3q7uo.mongodb.net/test?retryWrites=true");
+
+			MongoClient mongoClient = new MongoClient(uri);
 			MongoDatabase database = mongoClient.getDatabase(databaseName);
 			MongoCollection<Document> c = database.getCollection("email");
 			
